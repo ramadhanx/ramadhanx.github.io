@@ -21,17 +21,18 @@ const navObserver = new IntersectionObserver(
 );
 sections.forEach((s) => navObserver.observe(s));
 
-// Play the VLAN cable animation once when it scrolls into view
-const diagram = document.querySelector(".diagram");
-if (diagram) {
-  const diagramObserver = new IntersectionObserver(
+// Draw the VLAN cables once when the topology scrolls into view
+const topology = document.querySelector(".topology");
+if (topology) {
+  topology.classList.add("armed");
+  const topologyObserver = new IntersectionObserver(
     (entries, obs) => {
       if (entries[0].isIntersecting) {
-        diagram.classList.add("in-view");
+        topology.classList.add("in-view");
         obs.disconnect();
       }
     },
-    { threshold: 0.4 }
+    { threshold: 0.35 }
   );
-  diagramObserver.observe(diagram);
+  topologyObserver.observe(topology);
 }
