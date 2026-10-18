@@ -108,30 +108,39 @@
         <div class="project-text">
           <h3>Access Point VLAN Deployment</h3>
           <p>
-            Implementasi VLAN pada Access Point untuk memisahkan traffic jaringan
-            berdasarkan kebutuhan operasional dan meningkatkan keamanan jaringan perusahaan.
+            Segmentasi jaringan Access Point ke dalam empat VLAN berdasarkan peran pengguna.
+            Traffic jadi lebih tertata, akses tamu terpisah dari jaringan internal,
+            dan keamanan jaringan perusahaan meningkat.
           </p>
-          <p class="tags">VLAN · Access Point · Network Security</p>
+          <dl class="vlan-list">
+            <div><dt>BOD</dt><dd>Board of Director</dd></div>
+            <div><dt>Mobile</dt><dd>Perangkat mobile</dd></div>
+            <div><dt>Guest</dt><dd>Tamu</dd></div>
+            <div><dt>Wifi</dt><dd>Karyawan / user umum</dd></div>
+          </dl>
+          <p class="tags">VLAN · Access Point · Segmentasi Jaringan · Network Security</p>
         </div>
 
         <figure class="diagram">
-          <svg viewBox="0 0 360 220" role="img" aria-label="Ilustrasi: satu access point memisahkan traffic ke beberapa VLAN">
-            <!-- Cables -->
-            <path class="cable c1" d="M180 74 V104 H60 V150"/>
-            <path class="cable c2" d="M180 74 V150"/>
-            <path class="cable c3" d="M180 74 V104 H300 V150"/>
-            <!-- Access point -->
+          <svg viewBox="0 0 360 210" role="img" aria-label="Satu access point dipisah menjadi empat VLAN: BOD, Mobile, Guest, dan Wifi">
+            <path class="cable c1" d="M180 74 V106 H45 V146"/>
+            <path class="cable c2" d="M180 74 V106 H135 V146"/>
+            <path class="cable c3" d="M180 74 V106 H225 V146"/>
+            <path class="cable c4" d="M180 74 V106 H315 V146"/>
+
             <rect class="node ap" x="120" y="30" width="120" height="44" rx="8"/>
             <text x="180" y="57" text-anchor="middle" class="t-ap">Access Point</text>
-            <!-- VLANs -->
-            <rect class="node" x="10" y="150" width="100" height="40" rx="8"/>
-            <text x="60" y="175" text-anchor="middle" class="t-vlan">VLAN A</text>
-            <rect class="node" x="130" y="150" width="100" height="40" rx="8"/>
-            <text x="180" y="175" text-anchor="middle" class="t-vlan">VLAN B</text>
-            <rect class="node" x="250" y="150" width="100" height="40" rx="8"/>
-            <text x="300" y="175" text-anchor="middle" class="t-vlan">VLAN C</text>
+
+            <rect class="node" x="6" y="146" width="78" height="40" rx="8"/>
+            <text x="45" y="171" text-anchor="middle" class="t-vlan">BOD</text>
+            <rect class="node" x="96" y="146" width="78" height="40" rx="8"/>
+            <text x="135" y="171" text-anchor="middle" class="t-vlan">Mobile</text>
+            <rect class="node" x="186" y="146" width="78" height="40" rx="8"/>
+            <text x="225" y="171" text-anchor="middle" class="t-vlan">Guest</text>
+            <rect class="node" x="276" y="146" width="78" height="40" rx="8"/>
+            <text x="315" y="171" text-anchor="middle" class="t-vlan">Wifi</text>
           </svg>
-          <figcaption>Ilustrasi: traffic dipisah per VLAN</figcaption>
+          <figcaption>Traffic dipisah per VLAN</figcaption>
         </figure>
       </article>
     </section>
