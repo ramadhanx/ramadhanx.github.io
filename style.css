@@ -350,6 +350,7 @@ main {
 }
 .diagram.in-view .c2 { animation-delay: 0.15s; }
 .diagram.in-view .c3 { animation-delay: 0.3s; }
+.diagram.in-view .c4 { animation-delay: 0.45s; }
 
 @keyframes plug { to { stroke-dashoffset: 0; } }
 
@@ -362,6 +363,36 @@ main {
 
 .t-ap   { fill: #fff; font: 700 15px var(--font-display); }
 .t-vlan { fill: var(--ink); font: 700 14px var(--font-display); }
+
+.vlan-list {
+  margin: 0 0 1.2rem;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.vlan-list div {
+  display: flex;
+  align-items: baseline;
+  gap: 0.8rem;
+}
+
+.vlan-list dt {
+  flex: none;
+  min-width: 4.2rem;
+  padding: 0.1rem 0.6rem;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--cable);
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--ink);
+}
+
+.vlan-list dd {
+  margin: 0;
+  color: var(--ink-soft);
+}
 
 /* ---------- Contact ---------- */
 .contact-list {
