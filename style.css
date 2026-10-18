@@ -222,6 +222,13 @@ main {
   background: var(--line);
 }
 
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .btn.primary,
+  :root:not([data-theme="light"]) .btn.primary:hover {
+    color: #0f1a24;
+  }
+}
+
 /* ---------- About ---------- */
 .about-text {
   margin: 0;
