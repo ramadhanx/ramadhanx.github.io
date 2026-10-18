@@ -36,3 +36,23 @@ if (topology) {
   );
   topologyObserver.observe(topology);
 }
+
+// Work out experience durations from dates, so "Sekarang" never goes stale
+function monthsBetween(start, end) {
+  const [sy, sm] = start.split("-").map(Number);
+  const [ey, em] = end ? end.split("-").map(Number) : [new Date().getFullYear(), new Date().getMonth() + 1];
+  return (ey - sy) * 12 + (em - sm) + 1; // both months counted
+}
+
+function formatMonths(total) {
+  const years = Math.floor(total / 12);
+  const months = total % 12;
+  const parts = [];
+  if (years) parts.push(years + " tahun");
+  if (months) parts.push(months + " bulan");
+  return parts.join(" ") || "1 bulan";
+}
+
+document.querySelectorAll("[data-start]").forEach((el) => {
+  el.textContent = formatMonths(monthsBetween(el.dataset.start, el.dataset.end));
+});
