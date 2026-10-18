@@ -1,105 +1,169 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Muhammad Ramadhani | IT Support</title>
-
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Muhammad Ramadhani | IT Support</title>
+  <meta name="description" content="Muhammad Ramadhani, IT Support & Infrastructure: Windows, Active Directory, VMware ESXi, VLAN, dan user support.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<div class="container">
+  <header class="topbar">
+    <a class="brand" href="#top">Ramadhani</a>
+    <nav aria-label="Navigasi utama">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#project">Project</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="top">
 
     <section class="hero">
-
-        <img src="profiles.jpg" class="profile" alt="Profile">
-
+      <div class="hero-text">
+        <p class="role">IT Support &amp; Infrastructure</p>
         <h1>Muhammad Ramadhani</h1>
-
-        <h2>IT Support & Infrastructure</h2>
-
-        <p>
-           IT Support Engineer dengan pengalaman dalam Windows, Active Directory, VMware, Networking, dan User Support.
-        </p>
-
+        <p class="lead">IT Support Engineer dengan pengalaman dalam Windows, Active Directory, VMware, Networking, dan User Support.</p>
+        <div class="actions">
+          <a class="btn primary" href="#contact">Hubungi saya</a>
+          <a class="btn" href="https://www.linkedin.com/in/muhammad-ramadhanx" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <img src="profiles.jpg" alt="Foto Muhammad Ramadhani" width="320" height="320">
+      </div>
     </section>
 
-    <section>
-
-        <h3>About Me</h3>
-
-        <p>
-        IT Support & Infrastructure dengan pengalaman dalam
-        Windows Client Support, Active Directory Administration,
-        VMware ESXi Virtualization, VLAN Configuration,
-        Network Troubleshooting,NVR/DVR System, Hardware & Software Support,
-        SAP User Support, serta pembuatan dan pemeliharaan
-        dokumentasi IT untuk lingkungan enterprise.
-        </p>
-
+    <section id="about" class="block">
+      <h2>About me</h2>
+      <p class="about-text">
+        IT Support &amp; Infrastructure dengan pengalaman dalam Windows Client Support,
+        Active Directory Administration, VMware ESXi Virtualization, VLAN Configuration,
+        Network Troubleshooting, NVR/DVR System, Hardware &amp; Software Support,
+        SAP User Support, serta pembuatan dan pemeliharaan dokumentasi IT untuk lingkungan enterprise.
+      </p>
     </section>
 
-    <section>
+    <section id="skills" class="block">
+      <h2>Skills</h2>
+      <div class="rack">
 
-        <h3>Skills</h3>
-
-        <div class="skills">
-
-            <span>Windows Client</span>
-            <span>Active Directory</span>
-            <span>VMware ESXi</span>
-            <span>Ubuntu Server</span>
-            <span>Networking</span>
-            <span>Hardware</span>
-            <span>Software</span>
-            <span>DNS</span>
-            <span>DHCP</span>
-            <span>OS</span>
-            <span>VLAN</span>
-            <span>OSI Layer</span>
-            <span>Tunneling </span>
-            <span>Helpdesk</span>
-            <span>SMB Port</span>
-            <span>SSH Port</span>
-            <span>POP3 / IMAP SMTP Configuration</span>
-            <span>NVR/DVR System</span>
-            <span>Problem Solving</span>
-            <span>SAP System</span>
-            <span>Documentation</span>
-
+        <div class="panel">
+          <h3>Sistem &amp; server</h3>
+          <ul>
+            <li>Windows Client</li>
+            <li>Active Directory</li>
+            <li>VMware ESXi</li>
+            <li>Ubuntu Server</li>
+            <li>OS</li>
+            <li>SAP System</li>
+          </ul>
         </div>
 
-    </section>
-
-    <section>
-
-        <h3>Project</h3>
-
-        <div class="card">
-            <h4>Access Point VLAN Deployment</h4>
-            <p>
-            Implementasi VLAN pada Access Point untuk memisahkan
-            traffic jaringan berdasarkan kebutuhan operasional
-            dan meningkatkan keamanan jaringan perusahaan.
-            </p>
+        <div class="panel">
+          <h3>Jaringan</h3>
+          <ul>
+            <li>Networking</li>
+            <li>DNS</li>
+            <li>DHCP</li>
+            <li>VLAN</li>
+            <li>OSI Layer</li>
+            <li>Tunneling</li>
+          </ul>
         </div>
 
+        <div class="panel">
+          <h3>Port &amp; protokol</h3>
+          <ul>
+            <li>SMB Port</li>
+            <li>SSH Port</li>
+            <li>POP3 / IMAP</li>
+            <li>SMTP Configuration</li>
+          </ul>
+        </div>
+
+        <div class="panel">
+          <h3>Support &amp; operasional</h3>
+          <ul>
+            <li>Helpdesk</li>
+            <li>Hardware</li>
+            <li>Software</li>
+            <li>NVR/DVR System</li>
+            <li>Problem Solving</li>
+            <li>Documentation</li>
+          </ul>
+        </div>
+
+      </div>
     </section>
 
-    <section>
+    <section id="project" class="block">
+      <h2>Project</h2>
+      <article class="project">
+        <div class="project-text">
+          <h3>Access Point VLAN Deployment</h3>
+          <p>
+            Implementasi VLAN pada Access Point untuk memisahkan traffic jaringan
+            berdasarkan kebutuhan operasional dan meningkatkan keamanan jaringan perusahaan.
+          </p>
+          <p class="tags">VLAN · Access Point · Network Security</p>
+        </div>
 
-        <h3>Contact</h3>
-
-        <p>Email  : ramadhani776888@gmail.com</p>
-        <p>GitHub : github.com/ramadhanx</p>
-        <p>Linkedin  : www.linkedin.com/in/muhammad-ramadhanx</p>
-        <p>Phone  : 085608666042</p>
-
+        <figure class="diagram">
+          <svg viewBox="0 0 360 220" role="img" aria-label="Ilustrasi: satu access point memisahkan traffic ke beberapa VLAN">
+            <!-- Cables -->
+            <path class="cable c1" d="M180 74 V104 H60 V150"/>
+            <path class="cable c2" d="M180 74 V150"/>
+            <path class="cable c3" d="M180 74 V104 H300 V150"/>
+            <!-- Access point -->
+            <rect class="node ap" x="120" y="30" width="120" height="44" rx="8"/>
+            <text x="180" y="57" text-anchor="middle" class="t-ap">Access Point</text>
+            <!-- VLANs -->
+            <rect class="node" x="10" y="150" width="100" height="40" rx="8"/>
+            <text x="60" y="175" text-anchor="middle" class="t-vlan">VLAN A</text>
+            <rect class="node" x="130" y="150" width="100" height="40" rx="8"/>
+            <text x="180" y="175" text-anchor="middle" class="t-vlan">VLAN B</text>
+            <rect class="node" x="250" y="150" width="100" height="40" rx="8"/>
+            <text x="300" y="175" text-anchor="middle" class="t-vlan">VLAN C</text>
+          </svg>
+          <figcaption>Ilustrasi: traffic dipisah per VLAN</figcaption>
+        </figure>
+      </article>
     </section>
 
-</div>
+    <section id="contact" class="block">
+      <h2>Contact</h2>
+      <ul class="contact-list">
+        <li>
+          <span class="label">Email</span>
+          <a href="mailto:ramadhani776888@gmail.com">ramadhani776888@gmail.com</a>
+        </li>
+        <li>
+          <span class="label">WhatsApp / Phone</span>
+          <a href="https://wa.me/6285608666042" target="_blank" rel="noopener">085608666042</a>
+        </li>
+        <li>
+          <span class="label">LinkedIn</span>
+          <a href="https://www.linkedin.com/in/muhammad-ramadhanx" target="_blank" rel="noopener">linkedin.com/in/muhammad-ramadhanx</a>
+        </li>
+        <li>
+          <span class="label">GitHub</span>
+          <a href="https://github.com/ramadhanx" target="_blank" rel="noopener">github.com/ramadhanx</a>
+        </li>
+      </ul>
+    </section>
 
+  </main>
+
+  <footer>
+    <p>© <span id="year"></span> Muhammad Ramadhani</p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
