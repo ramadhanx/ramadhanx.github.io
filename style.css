@@ -661,10 +661,17 @@ footer p { margin: 0; }
 @media (max-width: 760px) {
   .hero {
     grid-template-columns: 1fr;
-    gap: 2.5rem;
-    padding-top: 3rem;
+    gap: 2.2rem;
+    padding-top: 2.2rem;
   }
-  .hero-photo { order: -1; width: 200px; justify-self: start; }
+  .hero-photo {
+    order: -1;
+    width: 168px;
+    justify-self: start;
+    margin: 0 14px 14px 0; /* room for the orange offset block */
+  }
+  /* the height="320" attribute on <img> was overriding aspect-ratio and stretching it */
+  .hero-photo img { height: auto; }
   .rack,
   .contact-list { grid-template-columns: 1fr; }
   .block { padding-top: 3.5rem; }
