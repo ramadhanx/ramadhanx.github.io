@@ -1,25 +1,46 @@
 // Footer year
 document.getElementById("year").textContent = new Date().getFullYear();
 
-// Highlight the nav link of the section currently in view
-const links = document.querySelectorAll(".topbar nav a");
-const sections = [...links]
+// Highlight the nav link of the section currently in view.
+// Scroll-based (not IntersectionObserver) so the last, short section (Contact)
+// still gets highlighted when the page can't scroll any further.
+const links = [...document.querySelectorAll(".topbar nav a")];
+const sections = links
   .map((a) => document.querySelector(a.getAttribute("href")))
   .filter(Boolean);
 
-const navObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        links.forEach((a) =>
-          a.classList.toggle("active", a.getAttribute("href") === "#" + entry.target.id)
-        );
-      }
+function updateActiveLink() {
+  const atBottom =
+    window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
+  const line = window.innerHeight * 0.4; // a section becomes "current" once its top passes this line
+
+  let current = null;
+  if (atBottom) {
+    current = sections[sections.length - 1];
+  } else {
+    sections.forEach((s) => {
+      if (s.getBoundingClientRect().top <= line) current = s;
     });
-  },
-  { rootMargin: "-40% 0px -55% 0px" }
-);
-sections.forEach((s) => navObserver.observe(s));
+  }
+
+  links.forEach((a) =>
+    a.classList.toggle("active", !!current && a.getAttribute("href") === "#" + current.id)
+  );
+}
+
+let ticking = false;
+function onScroll() {
+  if (ticking) return;
+  ticking = true;
+  requestAnimationFrame(() => {
+    updateActiveLink();
+    ticking = false;
+  });
+}
+
+window.addEventListener("scroll", onScroll, { passive: true });
+window.addEventListener("resize", onScroll);
+updateActiveLink();
 
 // Draw the VLAN cables once when the topology scrolls into view
 const topology = document.querySelector(".topology");
