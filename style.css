@@ -13,6 +13,7 @@
   --v-mobile: #0f8f84;
   --v-guest: #8a5cc9;
   --v-wifi: #c26a12;
+  --v-static: #c0396f;
 
   --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
   --font-body: "Instrument Sans", "Segoe UI", system-ui, sans-serif;
@@ -36,6 +37,7 @@
     --v-mobile: #3cc5b6;
     --v-guest: #b794f0;
     --v-wifi: #f09040;
+    --v-static: #f07aa8;
     color-scheme: dark;
   }
 }
@@ -493,7 +495,7 @@ main {
   margin: 0;
   padding: 28px 0 0;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 14px;
   position: relative;
 }
@@ -503,8 +505,8 @@ main {
   content: "";
   position: absolute;
   top: 0;
-  left: calc((100% - 42px) / 8);
-  right: calc((100% - 42px) / 8);
+  left: calc((100% - 56px) / 10);
+  right: calc((100% - 56px) / 10);
   height: 3px;
   background: var(--cable);
 }
@@ -525,6 +527,7 @@ main {
 .v-mobile { --c: var(--v-mobile); }
 .v-guest  { --c: var(--v-guest); }
 .v-wifi   { --c: var(--v-wifi); }
+.v-static { --c: var(--v-static); }
 
 /* drop cable from the bus into each card, coloured per VLAN */
 .vlan::before {
@@ -577,9 +580,10 @@ main {
 .topology.armed.in-view .vlan:nth-child(2)::before { transition-delay: 0.9s; }
 .topology.armed.in-view .vlan:nth-child(3)::before { transition-delay: 1s; }
 .topology.armed.in-view .vlan:nth-child(4)::before { transition-delay: 1.1s; }
+.topology.armed.in-view .vlan:nth-child(5)::before { transition-delay: 1.2s; }
 
 /* Narrow screens: AP on top, cards stacked on a single vertical cable */
-@media (max-width: 860px) {
+@media (max-width: 960px) {
   .ap-node { margin: 0 0 18px; }
   .ap-node::after { left: 24px; margin-left: 0; height: 18px; }
 
