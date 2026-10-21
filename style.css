@@ -693,3 +693,32 @@ footer p { margin: 0; }
     transition: none !important;
   }
 }
+
+/* ---------- Small phones (<= 600px): give content more room ---------- */
+@media (max-width: 600px) {
+  main { padding: 0 1rem; }
+
+  .topbar { padding-left: 1rem; padding-right: 1rem; }
+  .topbar nav { gap: 0.9rem; }
+  .topbar nav a { font-size: 0.92rem; padding: 0.45rem 0; }
+
+  /* Experience: narrower timeline gutter so bullets get a wider text column */
+  .timeline { padding-left: 1.5rem; }
+  .job { padding: 1rem 1rem 1.1rem; }
+  .job::before { left: -24px; }
+  .job ul { padding-left: 1rem; }
+
+  /* Project: fewer nested paddings so the VLAN cards are wider */
+  .project { padding: 1.1rem; }
+  .topology { padding: 1.2rem 0.9rem 1rem; }
+  .ap-node::after { left: 18px; }
+  .vlans { margin-left: 18px; padding-left: 20px; }
+  .vlan::before { left: -21px; width: 21px; }
+  .vlan:last-child::after { left: -26px; }
+}
+
+/* Very small phones (<= 340px): keep all five menu items on screen */
+@media (max-width: 340px) {
+  .topbar nav { gap: 0.6rem; }
+  .topbar nav a { font-size: 0.85rem; }
+}
