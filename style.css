@@ -623,15 +623,51 @@ main {
 }
 
 .contact-list li {
+  position: relative;
   display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.9rem 1.1rem;
   background: var(--surface);
   border: 1px solid var(--line);
-  border-left: 4px solid var(--accent);
-  border-radius: 10px;
-  padding: 0.9rem 1.1rem;
+  border-radius: 12px;
   overflow-wrap: anywhere;
+  transition: border-color 0.15s, transform 0.15s;
+}
+
+.contact-list li:hover,
+.contact-list li:focus-within {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.c-icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+}
+
+.c-icon svg,
+.c-arrow {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.c-icon svg { width: 22px; height: 22px; }
+
+.c-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  min-width: 0;
 }
 
 .contact-list .label {
@@ -640,7 +676,44 @@ main {
   font-weight: 500;
 }
 
-.contact-list a { font-weight: 600; }
+.contact-list a {
+  font-weight: 600;
+  text-decoration: none;
+}
+.contact-list a:hover { text-decoration: underline; }
+
+/* the whole card is the tap target, not just the text */
+.c-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+}
+
+.c-arrow {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  margin-left: auto;
+  color: var(--ink-soft);
+  opacity: 0.6;
+  transition: transform 0.15s, color 0.15s, opacity 0.15s;
+}
+
+.contact-list li:hover .c-arrow,
+.contact-list li:focus-within .c-arrow {
+  color: var(--accent);
+  opacity: 1;
+  transform: translate(2px, -2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-list li,
+  .c-arrow { transition: none; }
+  .contact-list li:hover,
+  .contact-list li:focus-within,
+  .contact-list li:hover .c-arrow { transform: none; }
+}
 
 /* ---------- Footer ---------- */
 footer {
