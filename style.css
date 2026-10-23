@@ -22,24 +22,22 @@
   color-scheme: light;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --paper: #0f1a24;
-    --surface: #17242f;
-    --ink: #e8eef3;
-    --ink-soft: #9fb0be;
-    --line: #2a3a47;
-    --blue: #6aa5f5;
-    --blue-deep: #8dbaf8;
-    --accent: #2bb3a3;
-    --on-blue: #0f1a24;
-    --v-bod: #6aa5f5;
-    --v-mobile: #e3b93c;
-    --v-guest: #b794f0;
-    --v-wifi: #f09040;
-    --v-static: #f07aa8;
-    color-scheme: dark;
-  }
+:root[data-theme="dark"] {
+  --paper: #0f1a24;
+  --surface: #17242f;
+  --ink: #e8eef3;
+  --ink-soft: #9fb0be;
+  --line: #2a3a47;
+  --blue: #6aa5f5;
+  --blue-deep: #8dbaf8;
+  --accent: #2bb3a3;
+  --on-blue: #0f1a24;
+  --v-bod: #6aa5f5;
+  --v-mobile: #e3b93c;
+  --v-guest: #b794f0;
+  --v-wifi: #f09040;
+  --v-static: #f07aa8;
+  color-scheme: dark;
 }
 
 /* ---------- Base ---------- */
@@ -83,8 +81,8 @@ h1, h2, h3 {
   z-index: 10;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
+  justify-content: flex-start;
+  gap: 1.4rem;
   padding: 0.9rem max(1.25rem, calc((100vw - var(--maxw)) / 2));
   background: color-mix(in srgb, var(--paper) 88%, transparent);
   backdrop-filter: blur(10px);
@@ -97,6 +95,7 @@ h1, h2, h3 {
   font-size: 1.15rem;
   color: var(--ink);
   text-decoration: none;
+  margin-right: auto;
 }
 
 .topbar nav { display: flex; gap: 1.4rem; }
@@ -199,13 +198,13 @@ main {
 .btn.primary {
   background: var(--blue);
   border-color: var(--blue);
-  color: #fff;
+  color: var(--on-blue);
 }
 
 .btn.primary:hover {
   background: var(--blue-deep);
   border-color: var(--blue-deep);
-  color: #fff;
+  color: var(--on-blue);
 }
 
 .hero-photo {
@@ -232,13 +231,6 @@ main {
   border-radius: 20px;
   border: 3px solid var(--paper);
   background: var(--line);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .btn.primary,
-  :root:not([data-theme="light"]) .btn.primary:hover {
-    color: #0f1a24;
-  }
 }
 
 /* ---------- About ---------- */
@@ -679,9 +671,6 @@ footer p { margin: 0; }
   .rack,
   .contact-list { grid-template-columns: 1fr; }
   .block { padding-top: 3.5rem; }
-  .topbar nav { gap: 1rem; }
-  .brand { display: none; }
-  .topbar { justify-content: center; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -699,8 +688,6 @@ footer p { margin: 0; }
   main { padding: 0 1rem; }
 
   .topbar { padding-left: 1rem; padding-right: 1rem; }
-  .topbar nav { gap: 0.9rem; }
-  .topbar nav a { font-size: 0.92rem; padding: 0.45rem 0; }
 
   /* Experience: narrower timeline gutter so bullets get a wider text column */
   .timeline { padding-left: 1.5rem; }
@@ -717,8 +704,186 @@ footer p { margin: 0; }
   .vlan:last-child::after { left: -26px; }
 }
 
-/* Very small phones (<= 340px): keep all five menu items on screen */
-@media (max-width: 340px) {
-  .topbar nav { gap: 0.6rem; }
-  .topbar nav a { font-size: 0.85rem; }
+
+/* ---------- Controls: language, theme, menu ---------- */
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.lang {
+  display: inline-flex;
+  padding: 2px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.lang button {
+  padding: 0.45rem 0.65rem;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--ink-soft);
+  font: 600 0.82rem/1 var(--font-body);
+  letter-spacing: 0.02em;
+  cursor: pointer;
+}
+
+.lang button:hover { color: var(--ink); }
+
+.lang button[aria-pressed="true"] {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.icon-btn {
+  display: inline-grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.icon-btn:hover { border-color: var(--accent); }
+
+.icon-btn svg {
+  width: 19px;
+  height: 19px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* show the icon of the mode you will switch to */
+:root[data-theme="dark"] .icon-moon,
+:root[data-theme="light"] .icon-sun { display: none; }
+
+.menu-btn { display: none; }
+.menu-btn .icon-close,
+.menu-btn[aria-expanded="true"] .icon-bars { display: none; }
+.menu-btn[aria-expanded="true"] .icon-close { display: block; }
+
+/* ---------- CV preview modal ---------- */
+.cv-modal {
+  width: min(92vw, 900px);
+  height: min(88vh, 820px);
+  max-width: none;
+  max-height: none;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--surface);
+  color: var(--ink);
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+}
+
+.cv-modal[open] { display: block; }
+
+.cv-modal::backdrop {
+  background: rgba(8, 14, 20, 0.65);
+  backdrop-filter: blur(3px);
+}
+
+.cv-shell {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.cv-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.2rem 1.4rem 0.8rem;
+}
+
+.cv-head h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.cv-sub {
+  margin: 0.3rem 0 0;
+  color: var(--ink-soft);
+  font-size: 0.93rem;
+}
+
+.cv-body {
+  flex: 1;
+  min-height: 0;
+  margin: 0 1.4rem;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.cv-body object {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.cv-fallback {
+  margin: 0;
+  padding: 2rem 1.4rem;
+  color: var(--ink-soft);
+}
+
+.cv-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.7rem;
+  padding: 1rem 1.4rem 1.2rem;
+}
+
+/* ---------- Mobile menu (<= 760px) ---------- */
+@media (max-width: 760px) {
+  .menu-btn { display: inline-grid; }
+
+  .topbar nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    padding: 0.4rem 1rem 1rem;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+    box-shadow: 0 18px 30px rgba(0, 0, 0, 0.18);
+  }
+
+  .topbar nav.open { display: flex; }
+
+  .topbar nav a {
+    padding: 0.8rem 0.3rem 0.8rem 0.9rem;
+    border-bottom: 0;
+    border-left: 3px solid transparent;
+    font-size: 1.05rem;
+  }
+
+  .topbar nav a.active { border-left-color: var(--accent); }
+}
+
+@media (max-width: 600px) {
+  .controls { gap: 0.45rem; }
+  .cv-modal { width: 94vw; height: 90vh; border-radius: 14px; }
+  .cv-head { padding: 1rem 1rem 0.6rem; }
+  .cv-body { margin: 0 1rem; }
+  .cv-actions { padding: 0.9rem 1rem 1rem; }
+  .cv-actions .btn { flex: 1; text-align: center; padding-left: 0.8rem; padding-right: 0.8rem; }
 }
